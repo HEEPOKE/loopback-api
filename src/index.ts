@@ -1,4 +1,4 @@
-import {ApplicationConfig, AppApplication} from './application';
+import {AppApplication, ApplicationConfig} from './application';
 import ConfigApp from './configs/config';
 
 export * from './application';
@@ -6,6 +6,7 @@ export * from './application';
 export async function main(options: ApplicationConfig = {}) {
   const app = new AppApplication(options);
   await app.boot();
+  await app.migrateSchema();
   await app.start();
 
   const url = app.restServer.url;

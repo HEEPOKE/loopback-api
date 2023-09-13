@@ -9,12 +9,15 @@ const config = {
   port: ConfigApp.DB_PORT,
   user: ConfigApp.DB_USERNAME,
   password: ConfigApp.DB_PASSWORD,
-  database: ConfigApp.DB_NAME
+  database: ConfigApp.DB_NAME,
+  ssl: false,
 };
 
 @lifeCycleObserver('datasource')
-export class DbDataSource extends juggler.DataSource
-  implements LifeCycleObserver {
+export class DbDataSource
+  extends juggler.DataSource
+  implements LifeCycleObserver
+{
   static dataSourceName = 'db';
   static readonly defaultConfig = config;
 

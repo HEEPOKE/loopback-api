@@ -1,4 +1,5 @@
 import {ApplicationConfig, AppApplication} from './application';
+import ConfigApp from './configs/config';
 
 export * from './application';
 
@@ -9,7 +10,6 @@ export async function main(options: ApplicationConfig = {}) {
 
   const url = app.restServer.url;
   console.log(`Server is running at ${url}`);
-  console.log(`Try ${url}/ping`);
 
   return app;
 }
@@ -17,8 +17,8 @@ export async function main(options: ApplicationConfig = {}) {
 if (require.main === module) {
   const config = {
     rest: {
-      port: +(process.env.PORT ?? 3000),
-      host: process.env.HOST,
+      port: +(ConfigApp.PORT ?? 3000),
+      host: ConfigApp.HOST,
       gracePeriodForClose: 5000,
       openApiSpec: {
         setServersFromRequest: true,

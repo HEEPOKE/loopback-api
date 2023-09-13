@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const {
+  HOST,
   PORT,
   DB_HOST,
   DB_PORT,
@@ -12,6 +13,7 @@ const {
 } = process.env;
 
 const ConfigApp = {
+  HOST,
   PORT,
   DB_HOST,
   DB_PORT,

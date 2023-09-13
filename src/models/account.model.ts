@@ -1,9 +1,9 @@
-import { Entity, model, property } from '@loopback/repository';
-import { RoleEnum } from '../enum/role.enum';
+import {Entity, model, property} from '@loopback/repository';
+import {RoleEnum} from '../enum/role.enum';
 
 @model({
   settings: {
-    postgresql: { schema: 'public', table: 'account' },
+    postgresql: {schema: 'public', table: 'account'},
   },
 })
 export class Account extends Entity {
@@ -14,7 +14,7 @@ export class Account extends Entity {
     description: 'The unique identifier for the account.',
     postgresql: {
       columnName: 'id',
-      dataType: 'serial',
+      dataType: 'integer',
       nullable: 'NO',
     },
   })
@@ -75,10 +75,34 @@ export class Account extends Entity {
     postgresql: {
       columnName: 'role',
       dataType: 'text',
-      default: RoleEnum.USER
+      default: RoleEnum.USER,
     },
   })
   role?: RoleEnum;
+
+  @property({
+    type: 'date',
+    required: true,
+    default: () => new Date(),
+    postgresql: {
+      columnName: 'created_at',
+      dataType: 'timestamp',
+      nullable: 'NO',
+    },
+  })
+  createdAt: Date;
+
+  @property({
+    type: 'date',
+    required: true,
+    default: () => new Date(),
+    postgresql: {
+      columnName: 'updated_at',
+      dataType: 'timestamp',
+      nullable: 'NO',
+    },
+  })
+  updatedAt: Date;
 
   constructor(data?: Partial<Account>) {
     super(data);

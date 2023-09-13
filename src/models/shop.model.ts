@@ -101,6 +101,30 @@ export class Shop extends Entity {
   })
   ownerId?: number;
 
+  @property({
+    type: 'date',
+    required: true,
+    default: () => new Date(),
+    postgresql: {
+      columnName: 'created_at',
+      dataType: 'timestamp',
+      nullable: 'NO',
+    },
+  })
+  createdAt: Date;
+
+  @property({
+    type: 'date',
+    required: true,
+    default: () => new Date(),
+    postgresql: {
+      columnName: 'updated_at',
+      dataType: 'timestamp',
+      nullable: 'NO',
+    },
+  })
+  updatedAt: Date;
+
   constructor(data?: Partial<Shop>) {
     super(data);
   }

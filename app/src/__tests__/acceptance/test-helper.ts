@@ -1,4 +1,4 @@
-import {LoopbackApiApplication} from '../..';
+import {AppApplication} from '../..';
 import {
   createRestAppClient,
   givenHttpServerConfig,
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new LoopbackApiApplication({
+  const app = new AppApplication({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: LoopbackApiApplication;
+  app: AppApplication;
   client: Client;
 }

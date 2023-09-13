@@ -1,7 +1,7 @@
 {
-  "name": "loopback-api",
+  "name": "app",
   "version": "0.0.1",
-  "description": "loopback api",
+  "description": "rest api",
   "keywords": [
     "loopback-application",
     "loopback"
@@ -14,31 +14,31 @@
   "scripts": {
     "build": "lb-tsc",
     "build:watch": "lb-tsc --watch",
-    "lint": "npm run eslint && npm run prettier:check",
-    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "lint": "yarn run eslint && yarn run prettier:check",
+    "lint:fix": "yarn run eslint:fix && yarn run prettier:fix",
     "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
-    "prettier:check": "npm run prettier:cli -- -l",
-    "prettier:fix": "npm run prettier:cli -- --write",
+    "prettier:check": "yarn run prettier:cli -l",
+    "prettier:fix": "yarn run prettier:cli --write",
     "eslint": "lb-eslint --report-unused-disable-directives .",
-    "eslint:fix": "npm run eslint -- --fix",
-    "pretest": "npm run rebuild",
-    "posttest": "npm run lint",
-    "docker:build": "docker build -t loopback-api .",
-    "docker:run": "docker run -p 3000:3000 -d loopback-api",
-    "premigrate": "npm run build",
+    "eslint:fix": "yarn run eslint --fix",
+    "pretest": "yarn run rebuild",
+    "posttest": "yarn run lint",
+    "docker:build": "docker build -t app .",
+    "docker:run": "docker run -p 3000:3000 -d app",
+    "premigrate": "yarn run build",
     "migrate": "node ./dist/migrate",
-    "preopenapi-spec": "npm run build",
+    "preopenapi-spec": "yarn run build",
     "openapi-spec": "node ./dist/openapi-spec",
-    "prestart": "npm run rebuild",
+    "prestart": "yarn run rebuild",
     "start": "node -r source-map-support/register .",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "yarn run clean && yarn run build"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "author": "HEEPOKE <77528292+HEEPOKE@users.noreply.github.com>",
+  "author": "Poundpitak Amornlerdlittichai <Damon1fx@gmail.com>",
   "license": "",
   "files": [
     "README.md",
@@ -54,7 +54,6 @@
     "@loopback/rest-explorer": "^6.1.2",
     "@loopback/service-proxy": "^6.1.2",
     "dotenv": "^16.3.1",
-    "loopback-connector-postgresql": "^6.0.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
